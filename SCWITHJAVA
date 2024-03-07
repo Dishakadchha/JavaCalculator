@@ -1,0 +1,69 @@
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+        // Creating a Scanner object to read input from the user
+        Scanner scanner = new Scanner(System.in);
+        double num1, num2; // Variables to store the two numbers for calculation
+        
+        // Loop to keep the program running until the user chooses to quit
+        while (true) {
+            // Displaying the menu of operations
+            System.out.println("Choose an operation:");
+            System.out.println("1. Addition");
+            System.out.println("2. Subtraction");
+            System.out.println("3. Multiplication");
+            System.out.println("4. Division");
+            System.out.println("5. Exponentiation");
+            System.out.println("6. Quit");
+            
+            // Reading the user's choice
+            int choice = scanner.nextInt();
+            
+            // If user chooses to quit, exit the loop
+            if (choice == 6) {
+                System.out.println("Exiting calculator...");
+                break;
+            }
+            
+            // Prompting the user to input the two numbers
+            System.out.print("Enter first number: ");
+            num1 = scanner.nextDouble();
+            System.out.print("Enter second number: ");
+            num2 = scanner.nextDouble();
+            
+            // Switch statement to perform the selected operation
+            switch (choice) {
+                case 1:
+                    // Addition
+                    System.out.println("Result: " + (num1 + num2));
+                    break;
+                case 2:
+                    // Subtraction
+                    System.out.println("Result: " + (num1 - num2));
+                    break;
+                case 3:
+                    // Multiplication
+                    System.out.println("Result: " + (num1 * num2));
+                    break;
+                case 4:
+                    // Division
+                    if (num2 == 0) {
+                        System.out.println("Error! Division by zero.");
+                    } else {
+                        System.out.println("Result: " + (num1 / num2));
+                    }
+                    break;
+                case 5:
+                    // Exponentiation
+                    System.out.println("Result: " + Math.pow(num1, num2));
+                    break;
+                default:
+                    // Invalid choice
+                    System.out.println("Invalid choice! Please choose a number between 1 and 6.");
+            }
+        }
+        // Closing the scanner to prevent resource leak
+        scanner.close();
+    }
+}
